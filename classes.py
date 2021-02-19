@@ -160,9 +160,9 @@ class Population:
             best_arg = np.argmax([p.update_self(self.global_best, problem_type=self.problem_type, **kwargs)[2] for p in self.particles])
             
         if (self.particles[best_arg].fitness() > fitness(self.global_best)) and (self.problem_type=="max"):
-            self.global_best = self.particles[best_arg].fitness()
+            self.global_best = self.particles[best_arg].x
         elif (self.particles[best_arg].fitness() < fitness(self.global_best)) and (self.problem_type=="min"):
-            self.global_best = self.particles[best_arg].fitness()
+            self.global_best = self.particles[best_arg].x
             
     def return_fitnesses(self):
         return {"particle {}".format(n):p.fitness() for n,p in enumerate(self.particles)}
